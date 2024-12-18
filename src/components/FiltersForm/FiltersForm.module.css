@@ -1,0 +1,103 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 360px;
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  color: var(--gray);
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+}
+
+.input {
+  padding-left: 48px;
+}
+
+.filersWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.filersTitle {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.line {
+  display: block;
+  width: 360px;
+  height: 2px;
+  background-color: var(--gray-light);
+}
+
+.blockWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 12px;
+}
+
+.hiddenCheckbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  width: 112px;
+  height: 96px;
+  cursor: pointer;
+  transition: border 250ms linear;
+}
+
+.checkboxLabel {
+  max-width: 80px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.hiddenCheckbox:checked + .wrapper {
+  border: 1px solid var(--button);
+}
+
+.wrapper:hover {
+  border: 1px solid var(--button);
+}

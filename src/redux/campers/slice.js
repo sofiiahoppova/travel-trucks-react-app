@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { fetchAllCampers } from "./operations";
+import { fetchAllCampers, fetchCamperDetails } from "./operations";
 
 const INITIAL_STATE = {
   campers: {

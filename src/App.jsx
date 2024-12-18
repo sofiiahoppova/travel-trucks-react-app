@@ -1,10 +1,18 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+
+import NavHeader from "./components/NavHeader/NavHeader";
+import HomePage from "./pages/HomePage";
+
 import "./App.css";
 
 function App() {
   return (
     <div>
+      <NavHeader />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
       {/* <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route path="/" element={<HomePage />} />

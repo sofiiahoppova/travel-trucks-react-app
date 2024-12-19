@@ -1,10 +1,15 @@
+import { useSelector } from "react-redux";
+import { selectCurrent } from "../../redux/campers/selectors";
+
 import css from "./Reviews.module.css";
-import camper from "/test.json";
 
 const Reviews = () => {
+  const camper = useSelector(selectCurrent);
+
   return (
-      <ul className={css.list}>
-        {camper.reviews.map((review, i) => {
+    <ul className={css.list}>
+      {camper.reviews &&
+        camper.reviews.map((review, i) => {
           const stars = Array.from({ length: 5 }, (_, index) => {
             return index < review.reviewer_rating ? (
               <svg key={index} width="16px" height="16px">
@@ -29,7 +34,7 @@ const Reviews = () => {
             </li>
           );
         })}
-      </ul>
+    </ul>
   );
 };
 

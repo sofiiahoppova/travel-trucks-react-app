@@ -57,6 +57,10 @@
   gap: 4px;
 }
 
+.link:hover {
+  text-decoration: underline;
+}
+
 .description {
   white-space: nowrap;
   overflow: hidden;

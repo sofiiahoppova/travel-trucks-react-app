@@ -1,3 +1,24 @@
+.linkWrapper {
+  position: relative;
+  font-size: 20px;
+  color: var(--button);
+  margin-bottom: 16px;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 0;
+  left: -36px;
+  fill: var(--button);
+  transition: fill 250ms linear;
+}
+
+.arrow:hover {
+  fill: var(--button-hover);
+}
+
 .mainWrapper {
   display: flex;
   flex-direction: column;

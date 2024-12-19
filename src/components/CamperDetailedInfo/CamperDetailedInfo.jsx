@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux";
+import { selectCurrent } from "../../redux/campers/selectors";
+
 import CharacteristicsList from "../CharacteristicsList/CharacteristicsList";
+
 import css from "./CamperDetailedInfo.module.css";
 
-import camper from "/test.json";
-
 const CamperDetailedInfo = () => {
+  const camper = useSelector(selectCurrent);
+
   return (
     <div className={css.mainWrapper}>
       <CharacteristicsList camper={camper} />

@@ -6,14 +6,26 @@ const INITIAL_STATE = {
   campers: {
     items: [],
     current: {},
+
     loading: false,
     error: null,
   },
+  favouriteCampers: [],
 };
 
 const campersSlice = createSlice({
   name: "campers",
   initialState: INITIAL_STATE,
+  reducers: {
+    addFavourite(state, action) {
+      state.favouriteCampers.push(action.payload);
+    },
+    removeFavourite(state, action) {
+      state.favouriteCampers = state.favouriteCampers.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCampers.pending, (state) => {
@@ -43,4 +55,5 @@ const campersSlice = createSlice({
   },
 });
 
+export const { addFavourite, removeFavourite } = campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

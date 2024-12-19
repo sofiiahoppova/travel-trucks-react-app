@@ -11,6 +11,8 @@ const CamperCard = ({ camper }) => {
     setIsFavourite(!isFavourite);
   };
 
+  const path = `${camper.id}/features`;
+
   return (
     <li className={css.itemWrapper}>
       <img
@@ -56,7 +58,7 @@ const CamperCard = ({ camper }) => {
         </div>
         <p className={css.description}>{camper.description}</p>
         <CharacteristicsList camper={camper} />
-        <Link to={camper.id} className="accentButton">
+        <Link to={path} className="accentButton">
           Show more
         </Link>
       </div>

@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.info {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.infoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.list {
+  display: flex;
+  gap: 48px;
+}
+
+.photo {
+  border-radius: 10px;
+  width: 292px;
+  height: 320px;
+  object-fit: cover;
+}
+
+.description {
+  color: var(--text);
+}

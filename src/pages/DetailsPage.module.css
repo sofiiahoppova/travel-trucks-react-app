@@ -1,0 +1,52 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.nav {
+  position: relative;
+}
+
+.navlist {
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.navlink {
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  transition: color 250ms linear;
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background-color: var(--button);
+  transition: all 250ms linear;
+}
+
+.navlink.active::after {
+  width: 80px;
+}
+
+.line {
+  display: block;
+  height: 1px;
+  background-color: var(--gray-light);
+  margin-bottom: 56px;
+}
+
+.wrapper {
+  display: flex;
+  gap: 40px;
+  /* justify-content: space-between; */
+}

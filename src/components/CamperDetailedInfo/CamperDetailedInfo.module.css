@@ -1,0 +1,44 @@
+.mainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  height: 588px;
+  padding: 44px 52px;
+  border-radius: 10px;
+  background-color: var(--inputs);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.line {
+  display: block;
+  /* width: 527px; */
+  height: 1px;
+  background-color: var(--gray-light);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 500;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtitle {
+  font-weight: 500;
+}

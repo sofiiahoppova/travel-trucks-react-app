@@ -17,28 +17,28 @@ const campersSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCampers.pending, (state) => {
-        state.contacts.loading = true;
-        state.contacts.error = null;
+        state.campers.loading = true;
+        state.campers.error = null;
       })
       .addCase(fetchAllCampers.fulfilled, (state, action) => {
-        state.contacts.loading = false;
-        state.contacts.items = action.payload;
+        state.campers.loading = false;
+        state.campers.items = [...state.campers.items, ...action.payload.items];
       })
       .addCase(fetchAllCampers.rejected, (state) => {
-        state.contacts.loading = false;
-        state.contacts.error = true;
+        state.campers.loading = false;
+        state.campers.error = true;
       })
       .addCase(fetchCamperDetails.pending, (state) => {
-        state.contacts.loading = true;
-        state.contacts.error = null;
+        state.campers.loading = true;
+        state.campers.error = null;
       })
       .addCase(fetchCamperDetails.fulfilled, (state, action) => {
-        state.contacts.loading = false;
-        state.contacts.current = action.payload;
+        state.campers.loading = false;
+        state.campers.current = action.payload;
       })
       .addCase(fetchCamperDetails.rejected, (state) => {
-        state.contacts.loading = false;
-        state.contacts.error = true;
+        state.campers.loading = false;
+        state.campers.error = true;
       });
   },
 });

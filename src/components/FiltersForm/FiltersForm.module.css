@@ -55,7 +55,7 @@
 .line {
   display: block;
   width: 360px;
-  height: 2px;
+  height: 1px;
   background-color: var(--gray-light);
 }
 

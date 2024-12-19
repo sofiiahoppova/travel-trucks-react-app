@@ -9,17 +9,20 @@ import css from "./CamperList.module.css";
 // import campers from "/test.json";
 import clsx from "clsx";
 
-const CamperList = () => {
-  //   const campers = useSelector(selectCampers);
+const CamperList = ({ handleClick }) => {
+  const campers = useSelector(selectCampers);
 
   return (
     <div>
       <ul className={css.list}>
-        {campers.map((camper) => {
-          return <CamperCard key={camper.id} camper={camper} />;
-        })}
+        {campers &&
+          campers.map((camper) => {
+            return <CamperCard key={camper.id} camper={camper} />;
+          })}
       </ul>
-      <button className={clsx("button", css.button)}>Load More</button>
+      <button className={clsx("button", css.button)} onClick={handleClick}>
+        Load More
+      </button>
     </div>
   );
 };

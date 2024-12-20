@@ -7,6 +7,7 @@ import CatalogPage from "./pages/CatalogPage";
 import DetailsPage from "./pages/DetailsPage";
 import CamperDetailedInfo from "./components/CamperDetailedInfo/CamperDetailedInfo";
 import Reviews from "./components/Reviews/Reviews";
+import Loader from "./components/Loader/Loader";
 
 import "./App.css";
 
@@ -14,7 +15,7 @@ function App() {
   return (
     <div>
       <NavHeader />
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />

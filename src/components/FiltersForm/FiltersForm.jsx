@@ -1,8 +1,36 @@
+import { useDispatch } from "react-redux";
+
+import { changeFilter, emptyFilter } from "../../redux/filters/slice";
+import { cleanFilters } from "../../utils/cleanFilters";
+
 import css from "./FiltersForm.module.css";
 
 const FiltersForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const elements = e.target.elements;
+
+    const filters = {
+      location: elements.location.value,
+      form: elements.type.value,
+      transmission: elements[1].checked && "automatic",
+      AC: elements[2].checked,
+      bathroom: elements[3].checked,
+      kitchen: elements[4].checked,
+      TV: elements[5].checked,
+    };
+
+    const cleanedFilters = cleanFilters(filters);
+
+    dispatch(emptyFilter());
+    dispatch(changeFilter(cleanedFilters));
+  };
+
   return (
-    <form className={css.mainWrapper}>
+    <form onSubmit={handleSubmit} className={css.mainWrapper}>
       <label className={css.labelWrapper}>
         <span className={css.label}>Location</span>
         <div className={css.inputWrapper}>
@@ -23,177 +51,102 @@ const FiltersForm = () => {
           <h3 className={css.title}>Vehicle equipment</h3>
           <span className={css.line} />
           <div className={css.blockWrapper}>
-            <label className={css.wrapper} htmlFor="transmission">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-diagram"></use>
               </svg>
               <input
                 type="checkbox"
-                id="transmission"
-                name="equipment"
+                name="transmission"
                 value="transmission"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>Automatic</span>
             </label>
-
-            <label className={css.wrapper} htmlFor="engine">
-              <svg width="32px" height="32px" className={css.iconCheckbox}>
-                <use href="/sprite.svg#icon-fuel-pump"></use>
-              </svg>
-              <input
-                type="checkbox"
-                id="engine"
-                name="equipment"
-                value="engine"
-                className={css.hiddenCheckbox}
-              />
-              <span className={css.checkboxLabel}>Engine</span>
-            </label>
-
-            <label className={css.wrapper} htmlFor="AC">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-wind"></use>
               </svg>
               <input
                 type="checkbox"
-                id="AC"
-                name="equipment"
+                name="airConditioning"
                 value="AC"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>AC</span>
             </label>
-
-            <label className={css.wrapper} htmlFor="bathroom">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-shower"></use>
               </svg>
               <input
                 type="checkbox"
-                id="bathroom"
-                name="equipment"
+                name="bathroom"
                 value="bathroom"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>Bathroom</span>
             </label>
-
-            <label className={css.wrapper} htmlFor="kitchen">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-cup-hot"></use>
               </svg>
               <input
                 type="checkbox"
-                id="kitchen"
-                name="equipment"
+                name="kitchen"
                 value="kitchen"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>Kitchen</span>
             </label>
-
-            <label className={css.wrapper} htmlFor="TV">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-tv"></use>
               </svg>
               <input
                 type="checkbox"
-                id="TV"
-                name="equipment"
+                name="television"
                 value="TV"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>TV</span>
             </label>
           </div>
-          {/* <li>
-                <label className={css.wrapper}>
-                  <svg width="32px" height="32px">
-                    <use href="/sprite.svg#icon-radios"></use>
-                  </svg>
-                  <input type="checkbox" name="equipment" value="radio" />
-                  <span>Radio</span>
-                </label>
-              </li>
-              <li>
-                <label className={css.wrapper}>
-                  <svg width="32px" height="32px">
-                    <use href="/sprite.svg#icon-fridge"></use>
-                  </svg>
-                  <input
-                    type="checkbox"
-                    name="equipment"
-                    value="refrigerator"
-                  />
-                  <span>Refrigerator</span>
-                </label>
-              </li>
-              <li>
-                <label className={css.wrapper}>
-                  <svg width="32px" height="32px">
-                    <use href="/sprite.svg#icon-microwave"></use>
-                  </svg>
-                  <input type="checkbox" name="equipment" value="microwave" />
-                  <span>Microwave</span>
-                </label>
-              </li>
-              <li>
-                <label className={css.wrapper}>
-                  <svg width="32px" height="32px">
-                    <use href="/sprite.svg#icon-gas-stove"></use>
-                  </svg>
-                  <input type="checkbox" name="equipment" value="gas" />
-                  <span>Gas</span>
-                </label>
-              </li>
-              <li>
-                <label className={css.wrapper}>
-                  <svg width="32px" height="32px">
-                    <use href="/sprite.svg#icon-water"></use>
-                  </svg>
-                  <input type="checkbox" name="equipment" value="water" />
-                  <span>Water</span>
-                </label>
-              </li> */}
         </div>
         <div className={css.filterContainer}>
           <h3 className={css.title}>Vehicle type</h3>
           <span className={css.line} />
           <div className={css.blockWrapper}>
-            <label className={css.wrapper} htmlFor="van">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-grid-1x2"></use>
               </svg>
               <input
                 type="radio"
-                id="van"
                 name="type"
-                value="van"
+                value="panelTruck"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>Van</span>
             </label>
-            <label className={css.wrapper} htmlFor="fullyIntegrated">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-grid-2x2"></use>
               </svg>
               <input
                 type="radio"
-                id="fullyIntegrated"
                 name="type"
                 value="fullyIntegrated"
                 className={css.hiddenCheckbox}
               />
               <span className={css.checkboxLabel}>Fully Integrated</span>
             </label>
-            <label className={css.wrapper} htmlFor="alcove">
+            <label className={css.wrapper}>
               <svg width="32px" height="32px" className={css.iconCheckbox}>
                 <use href="/sprite.svg#icon-grid-3x3"></use>
               </svg>
               <input
                 type="radio"
-                id="alcove"
                 name="type"
                 value="alcove"
                 className={css.hiddenCheckbox}

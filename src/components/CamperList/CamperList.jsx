@@ -1,16 +1,36 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
 
-import { selectCampers } from "../../redux/campers/selectors";
 import CamperCard from "../CamperCard/CamperCard";
+import Loader from "../Loader/Loader";
+
+import { fetchAllCampers } from "../../redux/campers/operations";
+import {
+  selectCampers,
+  selectLoading,
+  selectTotal,
+} from "../../redux/campers/selectors";
+import { selectFilter } from "../../redux/filters/selectors";
 
 import css from "./CamperList.module.css";
 
-// import campers from "/test.json";
-import clsx from "clsx";
+let limit = 4;
+let averageLimit = 4;
 
-const CamperList = ({ handleClick }) => {
+const CamperList = () => {
+  const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
+  const total = useSelector(selectTotal);
+  const filters = useSelector(selectFilter);
+  const isLoading = useSelector(selectLoading);
+
+  const handleClick = () => {
+    if (limit < total) {
+      limit += averageLimit;
+      dispatch(fetchAllCampers({ limit, ...filters }));
+    }
+    console.log(limit);
+  };
 
   return (
     <div>
@@ -20,7 +40,12 @@ const CamperList = ({ handleClick }) => {
             return <CamperCard key={camper.id} camper={camper} />;
           })}
       </ul>
-      <button className={clsx("button", css.button)} onClick={handleClick}>
+      {isLoading && <Loader />}
+      <button
+        className={clsx("button", css.button)}
+        onClick={handleClick}
+        disabled={limit >= total}
+      >
         Load More
       </button>
     </div>

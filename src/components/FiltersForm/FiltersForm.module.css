@@ -94,7 +94,7 @@
   text-align: center;
 }
 
-.hiddenCheckbox:checked + .wrapper {
+.wrapper:has(.hiddenCheckbox:checked) {
   border: 1px solid var(--button);
 }
 

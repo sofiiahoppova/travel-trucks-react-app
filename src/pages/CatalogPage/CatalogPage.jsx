@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import CamperList from "../components/CamperList/CamperList";
-import FiltersForm from "../components/FiltersForm/FiltersForm";
+import CamperList from "../../components/CamperList/CamperList";
+import FiltersForm from "../../components/FiltersForm/FiltersForm";
 
-import { fetchAllCampers } from "../redux/campers/operations";
-import { selectFilter } from "../redux/filters/selectors";
-import { selectError } from "../redux/campers/selectors";
+import { fetchAllCampers } from "../../redux/campers/operations";
+import { selectFilter } from "../../redux/filters/selectors";
+import { selectError } from "../../redux/campers/selectors";
 
 import css from "./CatalogPage.module.css";
 

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 
@@ -14,22 +15,23 @@ import { selectFilter } from "../../redux/filters/selectors";
 
 import css from "./CamperList.module.css";
 
-let limit = 4;
-let averageLimit = 4;
-
 const CamperList = () => {
   const dispatch = useDispatch();
+  const [limit, setLimit] = useState(4);
   const campers = useSelector(selectCampers);
   const total = useSelector(selectTotal);
   const filters = useSelector(selectFilter);
   const isLoading = useSelector(selectLoading);
 
+  useEffect(() => {
+    setLimit(4);
+  }, [filters]);
+
   const handleClick = () => {
     if (limit < total) {
-      limit += averageLimit;
-      dispatch(fetchAllCampers({ limit, ...filters }));
+      setLimit(limit + 4);
+      dispatch(fetchAllCampers({ limit: limit + 4, ...filters }));
     }
-    console.log(limit);
   };
 
   return (
@@ -40,14 +42,19 @@ const CamperList = () => {
             return <CamperCard key={camper.id} camper={camper} />;
           })}
       </ul>
-      {isLoading && <Loader />}
-      <button
-        className={clsx("button", css.button)}
-        onClick={handleClick}
-        disabled={limit >= total}
-      >
-        Load More
-      </button>
+      <div className={css.wrapper}>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <button
+            className={clsx("button", css.button)}
+            onClick={handleClick}
+            disabled={limit >= total}
+          >
+            Load More
+          </button>
+        )}
+      </div>
     </div>
   );
 };

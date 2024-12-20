@@ -4,12 +4,12 @@ import { useEffect } from "react";
 import clsx from "clsx";
 import { FaArrowLeft } from "react-icons/fa";
 
-import CamperMainInfo from "../components/CamperMainInfo/CamperMainInfo";
-import BookingForm from "../components/BookingForm/BookingForm";
-import Loader from "../components/Loader/Loader";
+import CamperMainInfo from "../../components/CamperMainInfo/CamperMainInfo";
+import BookingForm from "../../components/BookingForm/BookingForm";
+import Loader from "../../components/Loader/Loader";
 
-import { fetchCamperDetails } from "../redux/campers/operations";
-import { selectLoading } from "../redux/campers/selectors";
+import { fetchCamperDetails } from "../../redux/campers/operations";
+import { selectLoading } from "../../redux/campers/selectors";
 
 import css from "./DetailsPage.module.css";
 

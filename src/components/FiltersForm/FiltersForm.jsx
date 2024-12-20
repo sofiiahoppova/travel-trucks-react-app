@@ -4,6 +4,7 @@ import { changeFilter, emptyFilter } from "../../redux/filters/slice";
 import { cleanFilters } from "../../utils/cleanFilters";
 
 import css from "./FiltersForm.module.css";
+import { resetCampers } from "../../redux/campers/slice";
 
 const FiltersForm = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const FiltersForm = () => {
 
     const cleanedFilters = cleanFilters(filters);
 
+    dispatch(resetCampers());
     dispatch(emptyFilter());
     dispatch(changeFilter(cleanedFilters));
   };

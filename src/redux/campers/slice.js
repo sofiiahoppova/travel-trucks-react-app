@@ -35,6 +35,9 @@ const campersSlice = createSlice({
         (item) => item.id !== action.payload
       );
     },
+    resetCampers(state) {
+      state.campers.items = [];
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -54,5 +57,6 @@ const campersSlice = createSlice({
   },
 });
 
-export const { addFavourite, removeFavourite } = campersSlice.actions;
+export const { addFavourite, removeFavourite, resetCampers } =
+  campersSlice.actions;
 export const campersReducer = campersSlice.reducer;

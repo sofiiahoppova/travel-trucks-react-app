@@ -75,7 +75,7 @@ const CamperCard = ({ camper }) => {
           </div>
         </div>
         <p className={css.description}>{camper.description}</p>
-        <CharacteristicsList camper={camper} />
+        <CharacteristicsList camper={camper} type={'short'} />
         <Link to={path} className="accentButton">
           Show more
         </Link>

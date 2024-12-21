@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import css from "./CharacteristicsList.module.css";
 
-const CharacteristicsList = ({ camper }) => {
-  const features = [
+const CharacteristicsList = ({ camper, type }) => {
+  const longFeatures = [
     { key: "transmission", label: "Automatic", icon: "icon-diagram" },
     { key: "engine", label: "Petrol", icon: "icon-fuel-pump" },
     { key: "AC", label: "AC", icon: "icon-wind" },
@@ -20,7 +20,8 @@ const CharacteristicsList = ({ camper }) => {
     { key: "gas", label: "Gas", icon: "icon-gas-stove", class: true },
     { key: "water", label: "Water", icon: "icon-water", class: true },
   ];
-
+  const shortFeatures = longFeatures.slice(0, 6);
+  const features = type === "short" ? shortFeatures : longFeatures;
   const validFeatures = features.filter((feature) => camper[feature.key]);
 
   return (

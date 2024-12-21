@@ -14,3 +14,33 @@
   display: block;
   margin: auto;
 }
+
+.buttonUp {
+  background-color: #fff;
+  border: 1px solid var(--gray-light);
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  transition: border 250ms linear;
+}
+
+.buttonUp:hover {
+  border: 1px solid var(--button-hover);
+}
+
+.buttonUp:hover > .arrow {
+  fill: var(--button-hover);
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  fill: var(--gray);
+  transition: fill 250ms linear;
+}

@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
+
 import { selectCurrent } from "../../redux/campers/selectors";
 
+import SimpleBar from "simplebar-react";
+import "simplebar-react/dist/simplebar.min.css";
 import css from "./CamperMainInfo.module.css";
 
 const CamperMainInfo = () => {
@@ -28,14 +31,20 @@ const CamperMainInfo = () => {
         </div>
         <p className={css.price}>&euro;{camper.price}.00</p>
       </div>
-      <ul className={css.list}>
-        {camper.gallery &&
-          camper.gallery.map((photo, i) => (
-            <li key={i}>
-              <img src={photo.original} alt="van photo" className={css.photo} />
-            </li>
-          ))}
-      </ul>
+      <SimpleBar style={{ maxWidth: "100%" }}>
+        <ul className={css.list}>
+          {camper.gallery &&
+            camper.gallery.map((photo, i) => (
+              <li key={i}>
+                <img
+                  src={photo.original}
+                  alt="van photo"
+                  className={css.photo}
+                />
+              </li>
+            ))}
+        </ul>
+      </SimpleBar>
       <p className={css.description}>{camper.description}</p>
     </div>
   );
